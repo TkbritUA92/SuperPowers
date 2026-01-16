@@ -1,463 +1,534 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4689cc; -webkit-text-stroke: #4689cc}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #8cd3fe; -webkit-text-stroke: #8cd3fe}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #c27e65; -webkit-text-stroke: #c27e65}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d7378; -webkit-text-stroke: #6d7378}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #cacaca; -webkit-text-stroke: #cacaca; min-height: 16.0px}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #71c083; -webkit-text-stroke: #71c083}
-    span.s1 {font-kerning: none; background-color: #171818}
-    span.s2 {font-kerning: none; color: #8cd3fe; background-color: #171818; -webkit-text-stroke: 0px #8cd3fe}
-    span.s3 {font-kerning: none; color: #6d6d6d; background-color: #171818; -webkit-text-stroke: 0px #6d6d6d}
-    span.s4 {font-kerning: none; color: #cacaca; background-color: #171818; -webkit-text-stroke: 0px #cacaca}
-    span.s5 {font-kerning: none; color: #c27e65; background-color: #171818; -webkit-text-stroke: 0px #c27e65}
-    span.s6 {font-kerning: none; color: #4689cc; background-color: #171818; -webkit-text-stroke: 0px #4689cc}
-    span.s7 {font-kerning: none; color: #d4d4d4; background-color: #171818; -webkit-text-stroke: 0px #d4d4d4}
-    span.s8 {font-kerning: none; color: #71c083; background-color: #171818; -webkit-text-stroke: 0px #71c083}
-    span.s9 {font-kerning: none; color: #a7c598; background-color: #171818; -webkit-text-stroke: 0px #a7c598}
-    span.s10 {font-kerning: none}
-    span.s11 {font-kerning: none; color: #b76ff7; background-color: #171818; -webkit-text-stroke: 0px #b76ff7}
-    span.s12 {font-kerning: none; color: #f67c30; background-color: #171818; -webkit-text-stroke: 0px #f67c30}
-    span.s13 {font-kerning: none; color: #6d7378; background-color: #171818; -webkit-text-stroke: 0px #6d7378}
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cloud Defender: Superpower Mission</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* GAMING THEME CSS */
+    * {
+      box-sizing: border-box;
+      user-select: none;
+    }
+
+    body {
+      background-color: #050505;
+      color: #fff;
+      font-family: 'Urbanist', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background-image: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+    }
+
+    .game-container {
+      width: 90%;
+      max-width: 1000px;
+      height: 600px;
+      background: rgba(20, 20, 20, 0.8);
+      border: 2px solid #333;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 50px rgba(16, 185, 129, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    /* HUD (Heads Up Display) */
+    .hud {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 30px;
+      border-bottom: 2px solid #333;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hud-item {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 20px;
+      color: #10b981;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* SCREENS */
+    .screen {
+      position: absolute;
+      top: 60px;
+      /* Below HUD */
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .hidden {
+      display: none !important;
+      opacity: 0;
+    }
+
+    /* INTRO SCREEN */
+    h1 {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 64px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px #10b981;
+    }
+
+    .start-btn {
+      background: #10b981;
+      color: #000;
+      border: none;
+      padding: 20px 60px;
+      font-size: 24px;
+      font-family: 'Chakra Petch', sans-serif;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-transform: uppercase;
+    }
+
+    .start-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    }
+
+    /* GAMEPLAY SCREEN */
+    .disaster-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 2px solid #ef4444;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 700px;
+      margin-bottom: 40px;
+      animation: pulse-red 2s infinite;
+    }
+
+    @keyframes pulse-red {
+      0% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+      }
+
+      100% {
+        box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+      }
+    }
+
+    .disaster-title {
+      color: #ef4444;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .disaster-text {
+      font-size: 28px;
+      line-height: 1.4;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: #1e1e24;
+      border: 2px solid #444;
+      border-radius: 12px;
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-5px);
+      background: #25252d;
+    }
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #3b82f6;
+    }
+
+    .card-title {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* FEEDBACK OVERLAYS */
+    .feedback {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .feedback h2 {
+      font-size: 48px;
+      font-family: 'Chakra Petch', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .feedback.correct h2 {
+      color: #10b981;
+    }
+
+    .feedback.wrong h2 {
+      color: #ef4444;
+    }
+
+    .next-btn {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 15px 40px;
+      font-size: 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-family: 'Chakra Petch', sans-serif;
+      font-weight: bold;
+    }
+
+    /* PROGRESS BAR */
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 10px;
+      background: #10b981;
+      width: 0%;
+      transition: width 0.5s;
+    }
   </style>
+
 </head>
+
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">Cloud Defender: Superpower Mission</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"preconnect"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"preconnect"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.gstatic.com"</span><span class="s4"> </span><span class="s2">crossorigin</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&amp;family=Urbanist:wght@400;700&amp;display=swap"</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* GAMING THEME CSS */</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">*</span><span class="s4"> </span><span class="s7">{</span><span class="s4"> </span><span class="s1">box-sizing:</span><span class="s4"> </span><span class="s5">border-box</span><span class="s7">;</span><span class="s4"> </span><span class="s1">user-select:</span><span class="s4"> </span><span class="s5">none</span><span class="s7">;</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">body</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background-color:</span><span class="s1"> #050505</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #fff</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Urbanist'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s5">flex</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">justify-content:</span><span class="s4"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">align-items:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">min-height:</span><span class="s1"> </span><span class="s9">100vh</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">margin:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">overflow:</span><span class="s1"> </span><span class="s5">hidden</span><span class="s7">;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">background-image:</span><span class="s4"> </span><span class="s1">radial-gradient(circle</span><span class="s4"> </span><span class="s1">at</span><span class="s4"> </span><span class="s1">center</span><span class="s7">,</span><span class="s4"> #1a1a2e </span><span class="s9">0%</span><span class="s7">,</span><span class="s4"> #000 </span><span class="s9">100%</span><span class="s1">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.game-container</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s9">90%</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">max-width:</span><span class="s1"> </span><span class="s9">1000px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">height:</span><span class="s1"> </span><span class="s9">600px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">20</span><span class="s7">,</span><span class="s1"> </span><span class="s9">20</span><span class="s7">,</span><span class="s1"> </span><span class="s9">20</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.8</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s9">2px</span><span class="s1"> </span><span class="s5">solid</span><span class="s1"> #333</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s4"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">position:</span><span class="s1"> </span><span class="s5">relative</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">overflow:</span><span class="s1"> </span><span class="s5">hidden</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">50px</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">16</span><span class="s7">,</span><span class="s1"> </span><span class="s9">185</span><span class="s7">,</span><span class="s1"> </span><span class="s9">129</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.1</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">backdrop-filter:</span><span class="s4"> </span><span class="s5">blur(</span><span class="s9">10px</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* HUD (Heads Up Display) */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.hud</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s5">flex</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">justify-content:</span><span class="s4"> </span><span class="s5">space-between</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">20px</span><span class="s1"> </span><span class="s9">30px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-bottom:</span><span class="s1"> </span><span class="s9">2px</span><span class="s1"> </span><span class="s5">solid</span><span class="s1"> #333</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">0</span><span class="s7">,</span><span class="s9">0</span><span class="s7">,</span><span class="s9">0</span><span class="s7">,</span><span class="s9">0.5</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.hud-item</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #10b981</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-weight:</span><span class="s1"> </span><span class="s5">bold</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s5">flex</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">align-items:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">gap:</span><span class="s1"> </span><span class="s9">10px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* SCREENS */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.screen</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">position:</span><span class="s1"> </span><span class="s5">absolute</span><span class="s7">;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">top:</span><span class="s4"> </span><span class="s9">60px</span><span class="s7">;</span><span class="s4"> </span><span class="s1">/* Below HUD */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">bottom:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">left:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">right:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s5">flex</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">flex-direction:</span><span class="s4"> </span><span class="s5">column</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">align-items:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">justify-content:</span><span class="s4"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s5">opacity</span><span class="s1"> </span><span class="s9">0.3s</span><span class="s1"> </span><span class="s5">ease</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s6">.hidden</span><span class="s4"> </span><span class="s7">{</span><span class="s4"> </span><span class="s1">display:</span><span class="s4"> </span><span class="s5">none</span><span class="s4"> </span><span class="s11">!important</span><span class="s7">;</span><span class="s4"> </span><span class="s1">opacity:</span><span class="s4"> </span><span class="s9">0</span><span class="s7">;</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* INTRO SCREEN */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">h1</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">64px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #fff</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">text-transform:</span><span class="s4"> </span><span class="s5">uppercase</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">margin-bottom:</span><span class="s4"> </span><span class="s9">10px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">text-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">20px</span><span class="s1"> #10b981</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.start-btn</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #10b981</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #000</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s5">none</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">20px</span><span class="s1"> </span><span class="s9">60px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">24px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-weight:</span><span class="s1"> </span><span class="s5">bold</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s4"> </span><span class="s9">50px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">cursor:</span><span class="s1"> </span><span class="s5">pointer</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">margin-top:</span><span class="s1"> </span><span class="s9">30px</span><span class="s7">;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s4"> </span><span class="s1">transform</span><span class="s4"> </span><span class="s9">0.2s</span><span class="s7">,</span><span class="s4"> </span><span class="s1">box-shadow</span><span class="s4"> </span><span class="s9">0.2s</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">text-transform:</span><span class="s4"> </span><span class="s5">uppercase</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.start-btn:hover</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transform:</span><span class="s1"> </span><span class="s5">scale(</span><span class="s9">1.05</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">30px</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">16</span><span class="s7">,</span><span class="s1"> </span><span class="s9">185</span><span class="s7">,</span><span class="s1"> </span><span class="s9">129</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.4</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* GAMEPLAY SCREEN */</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.disaster-box</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">239</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.1</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s9">2px</span><span class="s1"> </span><span class="s5">solid</span><span class="s1"> #ef4444</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">30px</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s4"> </span><span class="s9">15px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">text-align:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">max-width:</span><span class="s1"> </span><span class="s9">700px</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">margin-bottom:</span><span class="s4"> </span><span class="s9">40px</span><span class="s7">;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">animation:</span><span class="s4"> </span><span class="s1">pulse-red</span><span class="s4"> </span><span class="s9">2s</span><span class="s4"> </span><span class="s1">infinite</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">@keyframes</span><span class="s1"> </span><span class="s5">pulse-red</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">0%</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">10px</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">239</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.2</span><span class="s5">)</span><span class="s7">;</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">50%</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">30px</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">239</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.5</span><span class="s5">)</span><span class="s7">;</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s9">100%</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> </span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">0</span><span class="s1"> </span><span class="s9">10px</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">239</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">68</span><span class="s7">,</span><span class="s1"> </span><span class="s9">0.2</span><span class="s5">)</span><span class="s7">;</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.disaster-title</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #ef4444</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">24px</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">margin-bottom:</span><span class="s4"> </span><span class="s9">10px</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">text-transform:</span><span class="s4"> </span><span class="s5">uppercase</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.disaster-text</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">28px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">line-height:</span><span class="s1"> </span><span class="s9">1.4</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.cards-container</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s5">flex</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">gap:</span><span class="s1"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">flex-wrap:</span><span class="s1"> </span><span class="s5">wrap</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">justify-content:</span><span class="s4"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.card</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #1e1e24</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s9">2px</span><span class="s1"> </span><span class="s5">solid</span><span class="s1"> #444</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s4"> </span><span class="s9">12px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s9">220px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">text-align:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">cursor:</span><span class="s1"> </span><span class="s5">pointer</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s5">all</span><span class="s1"> </span><span class="s9">0.2s</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">position:</span><span class="s1"> </span><span class="s5">relative</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.card:hover</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border-color:</span><span class="s1"> #3b82f6</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transform:</span><span class="s1"> </span><span class="s5">translateY(</span><span class="s9">-5px</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #25252d</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.card-icon</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">40px</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">margin-bottom:</span><span class="s4"> </span><span class="s9">15px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #3b82f6</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.card-title</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">18px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-weight:</span><span class="s1"> </span><span class="s5">bold</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* FEEDBACK OVERLAYS */</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.feedback</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">position:</span><span class="s1"> </span><span class="s5">absolute</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">inset:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> </span><span class="s5">rgba(</span><span class="s9">0</span><span class="s7">,</span><span class="s9">0</span><span class="s7">,</span><span class="s9">0</span><span class="s7">,</span><span class="s9">0.9</span><span class="s5">)</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">display:</span><span class="s1"> </span><span class="s5">flex</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">flex-direction:</span><span class="s4"> </span><span class="s5">column</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">justify-content:</span><span class="s4"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">align-items:</span><span class="s1"> </span><span class="s5">center</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">z-index:</span><span class="s1"> </span><span class="s9">100</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.feedback</span><span class="s4"> </span><span class="s1">h2</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">48px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">margin-bottom:</span><span class="s4"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.feedback.correct</span><span class="s1"> </span><span class="s6">h2</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> </span><span class="s2">color:</span><span class="s1"> #10b981</span><span class="s7">;</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.feedback.wrong</span><span class="s1"> </span><span class="s6">h2</span><span class="s1"> </span><span class="s7">{</span><span class="s1"> </span><span class="s2">color:</span><span class="s1"> #ef4444</span><span class="s7">;</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">.next-btn</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #fff</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">color:</span><span class="s1"> #000</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">border:</span><span class="s1"> </span><span class="s5">none</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s9">15px</span><span class="s1"> </span><span class="s9">40px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-size:</span><span class="s1"> </span><span class="s9">20px</span><span class="s7">;</span></p>
-<p class="p2"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">border-radius:</span><span class="s4"> </span><span class="s9">30px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">cursor:</span><span class="s1"> </span><span class="s5">pointer</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Chakra Petch'</span><span class="s7">,</span><span class="s1"> </span><span class="s5">sans-serif</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-weight:</span><span class="s1"> </span><span class="s5">bold</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* PROGRESS BAR */</span></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.progress-bar</span><span class="s4"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">position:</span><span class="s1"> </span><span class="s5">absolute</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">bottom:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">left:</span><span class="s1"> </span><span class="s9">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">height:</span><span class="s1"> </span><span class="s9">10px</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">background:</span><span class="s1"> #10b981</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s9">0%</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">transition:</span><span class="s1"> </span><span class="s5">width</span><span class="s1"> </span><span class="s9">0.5s</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p3"><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"game-container"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- HEADS UP DISPLAY --&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"hud"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hud-item"</span><span class="s3">&gt;&lt;</span><span class="s6">i</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-server"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span><span class="s4"> CLOUD DEFENDER</span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"hud-item"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"scoreDisplay"</span><span class="s3">&gt;</span><span class="s4">SCORE: 0</span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 1. INTRO SCREEN --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"introScreen"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"screen"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">h1</span><span class="s3">&gt;</span><span class="s1">Cloud Defender</span><span class="s3">&lt;/</span><span class="s6">h1</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">style</span><span class="s3">=</span><span class="s5">"font-size: 24px; color: #aaa; margin-bottom: 40px;"</span><span class="s3">&gt;</span><span class="s1">The Server Farm is in trouble! Select the correct superpower to fix the disasters.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"start-btn"</span><span class="s4"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"startGame()"</span><span class="s3">&gt;</span><span class="s4">Start Mission</span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 2. GAME SCREEN --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"gameScreen"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"screen hidden"</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;!-- The Problem --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"disaster-box"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"disaster-title"</span><span class="s3">&gt;&lt;</span><span class="s6">i</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-triangle-exclamation"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;</span><span class="s4"> ALERT: SYSTEM FAILURE</span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"disaster-text"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"scenarioText"</span><span class="s3">&gt;</span><span class="s4">Loading...</span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s1"> </span><span class="s2">style</span><span class="s3">=</span><span class="s5">"color: #aaa; margin-bottom: 20px;"</span><span class="s3">&gt;</span><span class="s1">DEPLOY A SUPERPOWER TO FIX THIS:</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">&lt;!-- The Options --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"cards-container"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"optionsContainer"</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s1">&lt;!-- Cards injected by JS --&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- 3. VICTORY SCREEN --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"victoryScreen"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"screen hidden"</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">h1</span><span class="s4"> </span><span class="s2">style</span><span class="s3">=</span><span class="s1">"color: #facc15; text-shadow: 0 0 20px #facc15;"</span><span class="s3">&gt;</span><span class="s4">Mission Complete!</span><span class="s3">&lt;/</span><span class="s6">h1</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">style</span><span class="s3">=</span><span class="s1">"font-size: 32px; margin-bottom: 30px;"</span><span class="s3">&gt;</span><span class="s4">Final Score: </span><span class="s3">&lt;</span><span class="s6">span</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"finalScore"</span><span class="s4"> </span><span class="s2">style</span><span class="s3">=</span><span class="s1">"color: #10b981;"</span><span class="s3">&gt;</span><span class="s4">0</span><span class="s3">&lt;/</span><span class="s6">span</span><span class="s3">&gt;</span><span class="s4">/5</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">button</span><span class="s1"> </span><span class="s2">class</span><span class="s3">=</span><span class="s5">"start-btn"</span><span class="s1"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s5">"startGame()"</span><span class="s3">&gt;</span><span class="s1">Replay Mission</span><span class="s3">&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- FEEDBACK OVERLAY (Hidden by default) --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"feedbackOverlay"</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"feedback hidden"</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">h2</span><span class="s1"> </span><span class="s2">id</span><span class="s3">=</span><span class="s5">"feedbackTitle"</span><span class="s3">&gt;</span><span class="s1">CORRECT!</span><span class="s3">&lt;/</span><span class="s6">h2</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">p</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"feedbackText"</span><span class="s4"> </span><span class="s2">style</span><span class="s3">=</span><span class="s1">"font-size: 24px; margin-bottom: 30px; text-align: center; max-width: 600px;"</span><span class="s3">&gt;</span><span class="s4">Explanation goes here.</span><span class="s3">&lt;/</span><span class="s6">p</span><span class="s3">&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s3">&lt;</span><span class="s6">button</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"next-btn"</span><span class="s4"> </span><span class="s2">onclick</span><span class="s3">=</span><span class="s1">"nextLevel()"</span><span class="s3">&gt;</span><span class="s4">NEXT LEVEL </span><span class="s3">&lt;</span><span class="s6">i</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"fa-solid fa-arrow-right"</span><span class="s3">&gt;&lt;/</span><span class="s6">i</span><span class="s3">&gt;&lt;/</span><span class="s6">button</span><span class="s3">&gt;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- PROGRESS BAR --&gt;</span></p>
-<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">class</span><span class="s3">=</span><span class="s1">"progress-bar"</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"progressBar"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">div</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">// --- GAME DATA ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">const</span><span class="s1"> levels </span><span class="s7">=</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">{</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>disaster</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Oh no! We bought a £5,000 server but nobody is using it. We are wasting all our gold!"</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>correctId</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"payg"</span><span class="s7">,</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>explanation</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Correct! With 'Pay As You Go', you stop paying when you stop using it. Money saved!"</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>options</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"payg"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-coins"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Pay As You Go"</span><span class="s1"> </span><span class="s7">},</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"maint"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-wrench"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Easy Maintenance"</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"auto"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-robot"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Automatic System"</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">]</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">{</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>disaster</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"HELP! A creeper blew up our main server room! The game is going to crash!"</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>correctId</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"avail"</span><span class="s7">,</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>explanation</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Nice work! 'Great Availability' (Infinite Lives) means if one server breaks, another takes over instantly."</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>options</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"net"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-globe"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Network Access"</span><span class="s1"> </span><span class="s7">},</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"avail"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-rotate"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Great Availability"</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"payg"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-coins"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Pay As You Go"</span><span class="s1"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">]</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">{</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>disaster</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Traffic Alert! 1 Million players just joined the lobby at the same time. It's too crowded!"</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>correctId</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"auto"</span><span class="s7">,</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>explanation</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Boom! 'Automatic Scaling' saw the traffic and made the server bigger instantly."</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>options</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"avail"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-rotate"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Great Availability"</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"maint"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-wrench"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Easy Maintenance"</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"auto"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-robot"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Automatic Scaling"</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">]</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">{</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>disaster</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"The Boss is on holiday in Spain, but he needs to check the secret files right now!"</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>correctId</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"net"</span><span class="s7">,</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>explanation</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Sorted! 'Network Access' lets you login securely from any device, anywhere in the world."</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>options</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"net"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-globe"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Network Access"</span><span class="s1"> </span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"payg"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-coins"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Pay As You Go"</span><span class="s1"> </span><span class="s7">},</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"avail"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-rotate"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Great Availability"</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">]</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">{</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>disaster</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Ugh, this Windows update is taking 4 hours! We can't do any work while it installs."</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>correctId</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"maint"</span><span class="s7">,</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>explanation</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Fixed! With 'Easy Maintenance', the Cloud Provider does the updates in the background for you."</span><span class="s7">,</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>options</span><span class="s7">:</span><span class="s1"> </span><span class="s7">[</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"auto"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-robot"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Automatic Scaling"</span><span class="s4"> </span><span class="s7">},</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s1"> id</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"net"</span><span class="s7">,</span><span class="s1"> icon</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"fa-globe"</span><span class="s7">,</span><span class="s1"> title</span><span class="s7">:</span><span class="s1"> </span><span class="s8">"Network Access"</span><span class="s1"> </span><span class="s7">},</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">                </span></span><span class="s7">{</span><span class="s4"> id</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"maint"</span><span class="s7">,</span><span class="s4"> icon</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"fa-wrench"</span><span class="s7">,</span><span class="s4"> title</span><span class="s7">:</span><span class="s4"> </span><span class="s1">"Easy Maintenance"</span><span class="s4"> </span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s7">]</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">];</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">// --- STATE VARIABLES ---</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">let</span><span class="s1"> currentLevel </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">let</span><span class="s1"> score </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">// --- FUNCTIONS ---</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">function</span><span class="s1"> startGame</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>currentLevel </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>score </span><span class="s7">=</span><span class="s1"> </span><span class="s12">0</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>updateScore</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'progressBar'</span><span class="s7">).</span><span class="s1">style</span><span class="s7">.</span><span class="s1">width </span><span class="s7">=</span><span class="s1"> </span><span class="s8">'0%'</span><span class="s7">;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Navigation</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'introScreen'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'victoryScreen'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'gameScreen'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>loadLevel</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">function</span><span class="s1"> loadLevel</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> levelData </span><span class="s7">=</span><span class="s1"> levels</span><span class="s7">[</span><span class="s1">currentLevel</span><span class="s7">];</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Set Text</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'scenarioText'</span><span class="s7">).</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> levelData</span><span class="s7">.</span><span class="s1">disaster</span><span class="s7">;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Generate Cards</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> container </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'optionsContainer'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>container</span><span class="s7">.</span><span class="s1">innerHTML </span><span class="s7">=</span><span class="s1"> </span><span class="s8">''</span><span class="s7">;</span><span class="s1"> </span><span class="s13">// Clear old cards</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>levelData</span><span class="s7">.</span><span class="s1">options</span><span class="s7">.</span><span class="s1">forEach</span><span class="s7">(</span><span class="s1">opt </span><span class="s7">=&gt;</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s11">const</span><span class="s1"> btn </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">createElement</span><span class="s7">(</span><span class="s8">'div'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>btn</span><span class="s7">.</span><span class="s1">className </span><span class="s7">=</span><span class="s1"> </span><span class="s8">'card'</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>btn</span><span class="s7">.</span><span class="s1">onclick </span><span class="s7">=</span><span class="s1"> </span><span class="s7">()</span><span class="s1"> </span><span class="s7">=&gt;</span><span class="s1"> checkAnswer</span><span class="s7">(</span><span class="s1">opt</span><span class="s7">.</span><span class="s1">id</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>btn</span><span class="s7">.</span><span class="s1">innerHTML </span><span class="s7">=</span><span class="s1"> </span><span class="s8">`</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="card-icon"&gt;&lt;i class="fa-solid </span><span class="s7">${</span><span class="s4">opt</span><span class="s7">.</span><span class="s4">icon</span><span class="s7">}</span><span class="s1">"&gt;&lt;/i&gt;&lt;/div&gt;</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="card-title"&gt;</span><span class="s7">${</span><span class="s4">opt</span><span class="s7">.</span><span class="s4">title</span><span class="s7">}</span><span class="s1">&lt;/div&gt;</span></p>
-<p class="p7"><span class="s1"><span class="Apple-converted-space">            </span>`</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>container</span><span class="s7">.</span><span class="s1">appendChild</span><span class="s7">(</span><span class="s1">btn</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">});</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">function</span><span class="s1"> checkAnswer</span><span class="s7">(</span><span class="s1">selectedId</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> levelData </span><span class="s7">=</span><span class="s1"> levels</span><span class="s7">[</span><span class="s1">currentLevel</span><span class="s7">];</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> overlay </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'feedbackOverlay'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> title </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'feedbackTitle'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> text </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'feedbackText'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> nextBtn </span><span class="s7">=</span><span class="s1"> document</span><span class="s7">.</span><span class="s1">querySelector</span><span class="s7">(</span><span class="s8">'.next-btn'</span><span class="s7">);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>overlay</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">selectedId </span><span class="s7">===</span><span class="s1"> levelData</span><span class="s7">.</span><span class="s1">correctId</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s13">// Correct</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>score</span><span class="s7">++;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>updateScore</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>overlay</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'wrong'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>overlay</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'correct'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>title</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"SUPERPOWER ACTIVATED!"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>title</span><span class="s7">.</span><span class="s1">style</span><span class="s7">.</span><span class="s1">color </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"#10b981"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>text</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> levelData</span><span class="s7">.</span><span class="s1">explanation</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>nextBtn</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"NEXT LEVEL"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span><span class="s1"> </span><span class="s11">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s13">// Wrong</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>overlay</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'correct'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>overlay</span><span class="s7">.</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'wrong'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>title</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"SYSTEM FAILURE!"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>title</span><span class="s7">.</span><span class="s1">style</span><span class="s7">.</span><span class="s1">color </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"#ef4444"</span><span class="s7">;</span></p>
-<p class="p7"><span class="s4"><span class="Apple-converted-space">            </span>text</span><span class="s7">.</span><span class="s4">innerText </span><span class="s7">=</span><span class="s4"> </span><span class="s1">"That superpower didn't fix the problem. The server crashed!"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>nextBtn</span><span class="s7">.</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> </span><span class="s8">"TRY NEXT"</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">function</span><span class="s1"> nextLevel</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'feedbackOverlay'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>currentLevel</span><span class="s7">++;</span></p>
-<p class="p6"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p5"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Update Progress Bar</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">const</span><span class="s1"> progress </span><span class="s7">=</span><span class="s1"> </span><span class="s7">(</span><span class="s1">currentLevel </span><span class="s7">/</span><span class="s1"> levels</span><span class="s7">.</span><span class="s1">length</span><span class="s7">)</span><span class="s1"> </span><span class="s7">*</span><span class="s1"> </span><span class="s12">100</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'progressBar'</span><span class="s7">).</span><span class="s1">style</span><span class="s7">.</span><span class="s1">width </span><span class="s7">=</span><span class="s1"> progress </span><span class="s7">+</span><span class="s1"> </span><span class="s8">'%'</span><span class="s7">;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">if</span><span class="s1"> </span><span class="s7">(</span><span class="s1">currentLevel </span><span class="s7">&lt;</span><span class="s1"> levels</span><span class="s7">.</span><span class="s1">length</span><span class="s7">)</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>loadLevel</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span><span class="s1"> </span><span class="s11">else</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">            </span>showVictory</span><span class="s7">();</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s7">}</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">function</span><span class="s1"> showVictory</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'gameScreen'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">add</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'victoryScreen'</span><span class="s7">).</span><span class="s1">classList</span><span class="s7">.</span><span class="s1">remove</span><span class="s7">(</span><span class="s8">'hidden'</span><span class="s7">);</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'finalScore'</span><span class="s7">).</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> score</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s11">function</span><span class="s1"> updateScore</span><span class="s7">()</span><span class="s1"> </span><span class="s7">{</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">        </span>document</span><span class="s7">.</span><span class="s1">getElementById</span><span class="s7">(</span><span class="s8">'scoreDisplay'</span><span class="s7">).</span><span class="s1">innerText </span><span class="s7">=</span><span class="s1"> </span><span class="s8">`SCORE: </span><span class="s7">${</span><span class="s1">score</span><span class="s7">}</span><span class="s8">`</span><span class="s7">;</span></p>
-<p class="p4"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s7">}</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
-<p class="p6"><span class="s10"></span><br></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
-<p class="p1"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+
+  <div class="game-container">
+
+    <!-- HEADS UP DISPLAY -->
+
+    <div class="hud">
+
+      <div class="hud-item"><i class="fa-solid fa-server"></i> CLOUD DEFENDER</div>
+
+      <div class="hud-item" id="scoreDisplay">SCORE: 0</div>
+
+    </div>
+
+    <!-- 1. INTRO SCREEN -->
+
+    <div id="introScreen" class="screen">
+
+      <h1>Cloud Defender</h1>
+
+      <p style="font-size: 24px; color: #aaa; margin-bottom: 40px;">The Server Farm is in trouble! Select the correct superpower to fix the disasters.</p>
+
+      <button class="start-btn" onclick="startGame()">Start Mission</button>
+
+    </div>
+
+    <!-- 2. GAME SCREEN -->
+
+    <div id="gameScreen" class="screen hidden">
+
+      <!-- The Problem -->
+
+      <div class="disaster-box">
+
+        <div class="disaster-title"><i class="fa-solid fa-triangle-exclamation"></i> ALERT: SYSTEM FAILURE</div>
+
+        <div class="disaster-text" id="scenarioText">Loading...</div>
+
+      </div>
+
+      <p style="color: #aaa; margin-bottom: 20px;">DEPLOY A SUPERPOWER TO FIX THIS:</p>
+
+      <!-- The Options -->
+
+      <div class="cards-container" id="optionsContainer">
+
+        <!-- Cards injected by JS -->
+
+      </div>
+
+    </div>
+
+    <!-- 3. VICTORY SCREEN -->
+
+    <div id="victoryScreen" class="screen hidden">
+
+      <h1 style="color: #facc15; text-shadow: 0 0 20px #facc15;">Mission Complete!</h1>
+
+      <p style="font-size: 32px; margin-bottom: 30px;">Final Score: <span id="finalScore" style="color: #10b981;">0</span>/5</p>
+
+      <button class="start-btn" onclick="startGame()">Replay Mission</button>
+
+    </div>
+
+    <!-- FEEDBACK OVERLAY (Hidden by default) -->
+
+    <div id="feedbackOverlay" class="feedback hidden">
+
+      <h2 id="feedbackTitle">CORRECT!</h2>
+
+      <p id="feedbackText" style="font-size: 24px; margin-bottom: 30px; text-align: center; max-width: 600px;">Explanation goes here.</p>
+
+      <button class="next-btn" onclick="nextLevel()">NEXT LEVEL <i class="fa-solid fa-arrow-right"></i></button>
+
+    </div>
+
+    <!-- PROGRESS BAR -->
+
+    <div class="progress-bar" id="progressBar"></div>
+
+  </div>
+
+  <script>
+    // --- GAME DATA ---
+    const levels = [{
+        disaster: "Oh no! We bought a £5,000 server but nobody is using it. We are wasting all our gold!",
+        correctId: "payg",
+        explanation: "Correct! With 'Pay As You Go', you stop paying when you stop using it. Money saved!",
+        options: [{
+            id: "payg",
+            icon: "fa-coins",
+            title: "Pay As You Go"
+          },
+          {
+            id: "maint",
+            icon: "fa-wrench",
+            title: "Easy Maintenance"
+          },
+          {
+            id: "auto",
+            icon: "fa-robot",
+            title: "Automatic System"
+          }
+        ]
+      },
+      {
+        disaster: "HELP! A creeper blew up our main server room! The game is going to crash!",
+        correctId: "avail",
+        explanation: "Nice work! 'Great Availability' (Infinite Lives) means if one server breaks, another takes over instantly.",
+        options: [{
+            id: "net",
+            icon: "fa-globe",
+            title: "Network Access"
+          },
+          {
+            id: "avail",
+            icon: "fa-rotate",
+            title: "Great Availability"
+          },
+          {
+            id: "payg",
+            icon: "fa-coins",
+            title: "Pay As You Go"
+          }
+        ]
+      },
+      {
+        disaster: "Traffic Alert! 1 Million players just joined the lobby at the same time. It's too crowded!",
+        correctId: "auto",
+        explanation: "Boom! 'Automatic Scaling' saw the traffic and made the server bigger instantly.",
+        options: [{
+            id: "avail",
+            icon: "fa-rotate",
+            title: "Great Availability"
+          },
+          {
+            id: "maint",
+            icon: "fa-wrench",
+            title: "Easy Maintenance"
+          },
+          {
+            id: "auto",
+            icon: "fa-robot",
+            title: "Automatic Scaling"
+          }
+        ]
+      },
+      {
+        disaster: "The Boss is on holiday in Spain, but he needs to check the secret files right now!",
+        correctId: "net",
+        explanation: "Sorted! 'Network Access' lets you login securely from any device, anywhere in the world.",
+        options: [{
+            id: "net",
+            icon: "fa-globe",
+            title: "Network Access"
+          },
+          {
+            id: "payg",
+            icon: "fa-coins",
+            title: "Pay As You Go"
+          },
+          {
+            id: "avail",
+            icon: "fa-rotate",
+            title: "Great Availability"
+          }
+        ]
+      },
+      {
+        disaster: "Ugh, this Windows update is taking 4 hours! We can't do any work while it installs.",
+        correctId: "maint",
+        explanation: "Fixed! With 'Easy Maintenance', the Cloud Provider does the updates in the background for you.",
+        options: [{
+            id: "auto",
+            icon: "fa-robot",
+            title: "Automatic Scaling"
+          },
+          {
+            id: "net",
+            icon: "fa-globe",
+            title: "Network Access"
+          },
+          {
+            id: "maint",
+            icon: "fa-wrench",
+            title: "Easy Maintenance"
+          }
+        ]
+      }
+    ];
+    // --- STATE VARIABLES ---
+    let currentLevel = 0;
+    let score = 0;
+    // --- FUNCTIONS ---
+    function startGame() {
+      currentLevel = 0;
+      score = 0;
+      updateScore();
+      document.getElementById('progressBar').style.width = '0%';
+      // Navigation
+      document.getElementById('introScreen').classList.add('hidden');
+      document.getElementById('victoryScreen').classList.add('hidden');
+      document.getElementById('gameScreen').classList.remove('hidden');
+      loadLevel();
+    }
+
+    function loadLevel() {
+      const levelData = levels[currentLevel];
+      // Set Text
+      document.getElementById('scenarioText').innerText = levelData.disaster;
+      // Generate Cards
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = ''; // Clear old cards
+      levelData.options.forEach(opt => {
+        const btn = document.createElement('div');
+        btn.className = 'card';
+        btn.onclick = () => checkAnswer(opt.id);
+        btn.innerHTML = `
+
+                <div class="card-icon"><i class="fa-solid ${opt.icon}"></i></div>
+
+                <div class="card-title">${opt.title}</div>
+
+            `;
+        container.appendChild(btn);
+      });
+    }
+
+    function checkAnswer(selectedId) {
+      const levelData = levels[currentLevel];
+      const overlay = document.getElementById('feedbackOverlay');
+      const title = document.getElementById('feedbackTitle');
+      const text = document.getElementById('feedbackText');
+      const nextBtn = document.querySelector('.next-btn');
+      overlay.classList.remove('hidden');
+      if (selectedId === levelData.correctId) {
+        // Correct
+        score++;
+        updateScore();
+        overlay.classList.remove('wrong');
+        overlay.classList.add('correct');
+        title.innerText = "SUPERPOWER ACTIVATED!";
+        title.style.color = "#10b981";
+        text.innerText = levelData.explanation;
+        nextBtn.innerText = "NEXT LEVEL";
+      } else {
+        // Wrong
+        overlay.classList.remove('correct');
+        overlay.classList.add('wrong');
+        title.innerText = "SYSTEM FAILURE!";
+        title.style.color = "#ef4444";
+        text.innerText = "That superpower didn't fix the problem. The server crashed!";
+        nextBtn.innerText = "TRY NEXT";
+      }
+    }
+
+    function nextLevel() {
+      document.getElementById('feedbackOverlay').classList.add('hidden');
+      currentLevel++;
+      // Update Progress Bar
+      const progress = (currentLevel / levels.length) * 100;
+      document.getElementById('progressBar').style.width = progress + '%';
+      if (currentLevel < levels.length) {
+        loadLevel();
+      } else {
+        showVictory();
+      }
+    }
+
+    function showVictory() {
+      document.getElementById('gameScreen').classList.add('hidden');
+      document.getElementById('victoryScreen').classList.remove('hidden');
+      document.getElementById('finalScore').innerText = score;
+    }
+
+    function updateScore() {
+      document.getElementById('scoreDisplay').innerText = `SCORE: ${score}`;
+    }
+  </script>
+
 </body>
+
 </html>
